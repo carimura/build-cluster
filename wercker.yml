@@ -3,7 +3,7 @@ box:
   ports:
     - "8080"
 
-build:
+inspect-cluster:
   steps:
     - script:
         name: compile
@@ -25,13 +25,8 @@ build:
         code: |
           echo 'Copying output...'; sleep 2
 
-deploy-wls-domain:
-  steps:
-    - script:
-      code: |
-          echo 'Copying to WLS domain...'; sleep 2
 
-push-image:
+select-software:
   steps:
     - script:
       code: |
@@ -41,11 +36,47 @@ push-image:
       code: |
           echo 'Pushing to registry...'; sleep 4
 
-deploy-staging:
+
+provision-weblogic:
   steps:
     - script:
       code: |
-          echo 'Deploying to staging cluster...'; sleep 1
+          echo 'Preparing WebLogic Server from Docker Image...'; sleep 4
+
+
+deploy-weblogic-domain:
+  steps:
+    - script:
+      code: |
+          echo 'Deploying WebLogic domain...'; sleep 4
+
+run-weblogic-tests:
+  steps:
+    - script:
+      code: |
+          echo 'WebLogic tests running...'; sleep 4
+
+
+provision-mysql:
+  steps:
+    - script:
+      code: |
+          echo 'Preparing MySQL from Docker Image...'; sleep 5
+
+update-mysql-schema:
+  steps:
+    - script:
+      code: |
+          echo 'Updating MySQL with latest schema...'; sleep 3
+
+run-mysql-tests:
+  steps:
+    - script:
+      code: |
+          echo 'MySQL tests running...'; sleep 4
+
+
+
 
 deploy-ui:
   steps:
@@ -59,19 +90,7 @@ deploy-api:
       code: |
           echo 'Deploying API microservice to cluster...'; sleep 5
 
-deploy-mysql:
-  steps:
-    - script:
-      code: |
-          echo 'Deploying MySQL to cluster...'; sleep 5
-
-update-schema:
-  steps:
-    - script:
-      code: |
-          echo 'Updating MySQL with latest schema...'; sleep 3
-
-integration-test:
+integration-tests:
   steps:
     - script:
       code: |
