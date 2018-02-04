@@ -8,72 +8,72 @@ inspect-cluster:
     - script:
         name: compile
         code: |
-          echo 'Compiling...'; sleep 5
+          echo 'Compiling...'; sleep 1
 
     - script:
         name: test
         code: |
-          echo 'Running unit tests...'; sleep 2
+          echo 'Running unit tests...'; sleep 1
 
     - script:
         name: package
         code: |
-          echo 'Building libraries...'; sleep 2
+          echo 'Building libraries...'; sleep 1
 
     - script:
         name: output
         code: |
-          echo 'Copying output...'; sleep 2
+          echo 'Copying output...'; sleep 1
 
 
 select-software:
   steps:
     - script:
       code: |
-          echo 'Reading software manifest...'; sleep 2
+          echo 'Reading software manifest...'; sleep 1
 
     - script:
       code: |
-          echo 'Inspecting Docker images...'; sleep 4
+          echo 'Inspecting Docker images...'; sleep 1
 
 
 provision-weblogic:
   steps:
     - script:
       code: |
-          echo 'Preparing WebLogic Server from Docker Image...'; sleep 4
+          echo 'Preparing WebLogic Server from Docker Image...'; sleep 1
 
 
 deploy-weblogic-domain:
   steps:
     - script:
       code: |
-          echo 'Deploying WebLogic domain...'; sleep 4
+          echo 'Deploying WebLogic domain...'; sleep 1
 
 run-weblogic-tests:
   steps:
     - script:
       code: |
-          echo 'WebLogic tests running...'; sleep 4
+          echo 'WebLogic tests running...'; sleep 1
 
 
 provision-mysql:
   steps:
     - script:
       code: |
-          echo 'Preparing MySQL from Docker Image...'; sleep 5
+          echo 'Preparing MySQL from Docker Image...'; sleep 1
 
 update-mysql-schema:
   steps:
     - script:
       code: |
-          echo 'Updating MySQL with latest schema...'; sleep 3
+          echo 'Updating MySQL with latest schema...'; sleep 1
 
 run-mysql-tests:
   steps:
     - script:
       code: |
-          echo 'MySQL tests running...'; sleep 4
+          echo 'MySQL tests running...'; sleep 1
 
 
 
