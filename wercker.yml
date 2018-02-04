@@ -30,11 +30,11 @@ select-software:
   steps:
     - script:
       code: |
-          echo 'Preparing artifacts...'; sleep 2
+          echo 'Reading software manifest...'; sleep 2
 
     - script:
       code: |
-          echo 'Pushing to registry...'; sleep 4
+          echo 'Inspecting Docker images...'; sleep 4
 
 
 provision-weblogic:
